@@ -1,3 +1,7 @@
+@import "../variables";
+@import "../functions";
+@import "../mixins";
+
 * {
   box-sizing: border-box;
 }
@@ -5,53 +9,197 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
-  padding: 2rem;
+  padding: 0;
   font-family: $font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: rem(16px);
+  line-height: 1.5;
   background-color: $uoc-bg;
   color: $uoc-corporate;
+  
+  @include respond-to('tablet') {
+    line-height: 1.6;
+  }
 }
 
 .uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
+  @include container(rem(800px), $spacing-xl);
+  @include card-style($spacing-xl, create-shadow(3), $radius-xl);
   text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xl;
 }
 
 .uoc-logo {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
+  margin: 0 auto $spacing-lg;
+  max-width: rem(200px);
   height: auto;
+  transition: transform 0.2s ease;
 
-  @media (min-width: $mqMinWidth) {
-    max-width: none;
+  @include respond-to('tablet') {
+    max-width: rem(250px);
+  }
+  
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
 .uoc-title {
   font-family: $font-family-serif;
-  font-size: 24px;
+  font-size: fluid-font-size(rem(24px), rem(36px));
   font-weight: 700;
   color: $uoc-corporate;
-
-  @media (min-width: $mqMinWidth) {
-    font-size: 36px;
-  }
+  margin-bottom: $spacing-md;
+  text-shadow: 0 1px 2px alpha-color($uoc-corporate, 0.1);
 }
 
 .uoc-footer {
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
+  margin-top: auto;
+  padding: $spacing-lg;
+  font-size: rem(12px);
   text-align: center;
+  color: lighten-color($uoc-corporate, 30%);
+  background-color: alpha-color($uoc-corporate, 0.05);
+  
+  @include respond-to('tablet') {
+    font-size: rem(14px);
+  }
+}
+
+.site-header {
+  background-color: white;
+  box-shadow: create-shadow(1);
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  
+  .header-container {
+    @include container($mqLarge, $spacing-md);
+    @include flex-center;
+    justify-content: space-between;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+  }
+  
+  .logo-section {
+    @include flex-center;
+    
+    img {
+      height: rem(40px);
+      width: auto;
+      margin-right: $spacing-sm;
+    }
+    
+    h1 {
+      font-size: rem(20px);
+      font-weight: 700;
+      color: $uoc-corporate;
+      margin: 0;
+      
+      @media (max-width: #{$mqTablet - 1px}) {
+        font-size: rem(16px);
+      }
+    }
+  }
+  
+  .main-nav {
+    display: none;
+    
+    @include respond-to('tablet') {
+      display: block;
+    }
+    
+    ul {
+      @include flex-center;
+      gap: $spacing-lg;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  
+  .mobile-menu-btn {
+    @include button-style(transparent, $uoc-corporate);
+    padding: $spacing-xs;
+    
+    @include respond-to('tablet') {
+      display: none;
+    }
+    
+    svg {
+      width: rem(24px);
+      height: rem(24px);
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-lg 0;
+}
+
+.card-grid {
+  margin-top: $spacing-xl;
+  @include grid-layout(1, $spacing-lg, 2, 3);
+}
+
+.stats-section {
+  background-color: white;
+  padding: $spacing-xl 0;
+  
+  .stats-grid {
+    text-align: center;
+    @include grid-layout(2, $spacing-lg, 4, 4);
+  }
+  
+  .stat-item {
+    padding: $spacing-md;
+    
+    .stat-number {
+      font-size: fluid-font-size(rem(32px), rem(48px));
+      font-weight: 700;
+      color: $uoc-corporate;
+      margin-bottom: $spacing-xs;
+      font-family: $font-family-serif;
+    }
+    
+    .stat-label {
+      font-size: rem(14px);
+      color: lighten-color($uoc-corporate, 30%);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.cta-section {
+  @include gradient-bg($uoc-corporate, $green-primary);
+  color: white;
+  padding: $spacing-2xl 0;
+  text-align: center;
+  
+  h2 {
+    font-size: fluid-font-size(rem(28px), rem(40px));
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+    font-family: $font-family-serif;
+  }
+  
+  p {
+    font-size: fluid-font-size(rem(16px), rem(20px));
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+    max-width: rem(600px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-buttons {
+    @include flex-center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
 }

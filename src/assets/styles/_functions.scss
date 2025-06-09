@@ -1,0 +1,62 @@
+@use "sass:math";
+@use "sass:color";
+@use "sass:map";
+
+@function rem($pixels, $base: 16px) {
+  @return math.div($pixels, $base) * 1rem;
+}
+
+@function fluid-font-size($min-size, $max-size) {
+  @return clamp(#{$min-size}, 4vw, #{$max-size});
+}
+
+@function lighten-color($color, $percentage) {
+  @return color.scale($color, $lightness: $percentage);
+}
+
+@function darken-color($color, $percentage) {
+  @return color.scale($color, $lightness: -$percentage);
+}
+
+@function alpha-color($color, $alpha) {
+  @return color.change($color, $alpha: $alpha);
+}
+
+@function contrast-ratio($color1, $color2) {
+  $l1: lightness($color1);
+  $l2: lightness($color2);
+  
+  @if $l1 > $l2 {
+    @return math.div($l1, $l2);
+  } @else {
+    @return math.div($l2, $l1);
+  }
+}
+
+@function text-color($bg-color, $light: #ffffff, $dark: #000000) {
+  $light-contrast: contrast-ratio($bg-color, $light);
+  $dark-contrast: contrast-ratio($bg-color, $dark);
+  
+  @if $light-contrast > $dark-contrast {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}
+
+@function create-shadow($level: 1) {
+  $shadows: (
+    1: (0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)),
+    2: (0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)),
+    3: (0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)),
+    4: (0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)),
+    5: (0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22))
+  );
+  
+  @return map.get($shadows, $level);
+}
+
+@function spacing($multiplier: 1) {
+  $base: 1rem;
+  @return $base * $multiplier;
+}

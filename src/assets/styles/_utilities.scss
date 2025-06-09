@@ -1,0 +1,359 @@
+@import "variables";
+@import "functions";
+@import "mixins";
+
+.btn-primary {
+  background-color: $uoc-corporate;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    background-color: darken-color($uoc-corporate, 10%);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  @include respond-to('tablet') {
+    padding: $spacing-md $spacing-lg;
+    font-size: rem(18px);
+  }
+}
+
+// Global page container
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  @media (min-width: 1200px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+// Header logo specific styles
+.header-logo {
+  height: 1.5rem !important;
+  width: auto !important;
+  max-height: 1.5rem !important;
+  max-width: none !important;
+}
+
+// Footer styles - full width
+footer {
+  width: 100%;
+}
+
+// Footer navigation styles
+footer nav ul {
+  list-style: none !important;
+  
+  li {
+    list-style: none !important;
+    
+    &::before {
+      display: none !important;
+    }
+  }
+}
+
+// Header styles - full width
+header {
+  width: 100%;
+}
+
+// Header navigation styles
+.desktop-nav {
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: block !important;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    list-style: none;
+    
+    a {
+      color: #374151;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: #1e40af;
+      }
+    }
+  }
+}
+
+.mobile-menu-btn {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #f3f4f6;
+  }
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  &.show {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.mobile-nav {
+  padding: 1rem 1.5rem;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      margin-bottom: 1rem;
+      
+      a {
+        display: block;
+        padding: 0.5rem 0;
+        color: #374151;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: #1e40af;
+        }
+      }
+    }
+  }
+}
+
+.btn-secondary {
+  @include button-style($uoc-masterbrand, $uoc-corporate, lighten-color($uoc-masterbrand, 10%));
+  border: 2px solid $uoc-corporate;
+}
+
+.section-title {
+  font-size: fluid-font-size(rem(24px), rem(36px));
+  font-weight: 700;
+  margin-bottom: spacing(1);
+  color: $uoc-corporate;
+  font-family: $font-family-serif;
+  
+  @include respond-to('tablet') {
+    margin-bottom: spacing(1.5);
+  }
+}
+
+.nav-link {
+  color: #374151;
+  transition: color 0.2s ease;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  
+  &:hover {
+    color: $uoc-corporate;
+  }
+  
+  @include focus-style($uoc-corporate);
+  
+  &.active {
+    color: $uoc-corporate;
+    font-weight: 600;
+  }
+}
+
+.speaker-card {
+  @include card-style($spacing-md, create-shadow(2), $radius-lg);
+  text-align: center;
+  width: 100%;
+  
+  img {
+    border-radius: $radius-md;
+    margin-bottom: $spacing-sm;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  h2 {
+    color: $uoc-corporate;
+    margin-bottom: $spacing-xs;
+    font-size: rem(20px);
+  }
+  
+  p {
+    color: lighten-color($uoc-corporate, 40%);
+    font-size: rem(14px);
+    line-height: 1.5;
+  }
+}
+
+.article-content {
+  @include container(rem(768px), $spacing-lg);
+  line-height: 1.75;
+  
+  h1 {
+    font-size: fluid-font-size(rem(28px), rem(40px));
+    font-weight: 700;
+    color: $uoc-corporate;
+    margin-bottom: spacing(0.5);
+    font-family: $font-family-serif;
+  }
+  
+  h2 {
+    font-size: fluid-font-size(rem(22px), rem(28px));
+    font-weight: 600;
+    color: $uoc-corporate;
+    margin-top: spacing(2);
+    margin-bottom: spacing(1);
+    font-family: $font-family-serif;
+  }
+  
+  p {
+    margin-bottom: spacing(1);
+    color: lighten-color($uoc-corporate, 40%);
+    
+    strong {
+      color: $uoc-corporate;
+      font-weight: 600;
+    }
+  }
+  
+  blockquote {
+    border-left: 4px solid $uoc-corporate;
+    padding-left: spacing(1);
+    font-style: italic;
+    color: lighten-color($uoc-corporate, 20%);
+    margin: spacing(1.5) 0;
+    background-color: alpha-color($uoc-masterbrand, 0.1);
+    padding: spacing(1);
+    border-radius: $radius-sm;
+  }
+  
+  figure {
+    margin: spacing(1.5) 0;
+    
+    img {
+      border-radius: $radius-md;
+      box-shadow: create-shadow(1);
+    }
+    
+    figcaption {
+      font-size: rem(14px);
+      color: lighten-color($uoc-corporate, 30%);
+      text-align: center;
+      margin-top: $spacing-xs;
+    }
+  }
+  
+  a {
+    color: $uoc-corporate;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $green-primary;
+    }
+    
+    @include focus-style($uoc-corporate);
+  }
+  
+  ul {
+    margin: spacing(1) 0;
+    padding-left: spacing(1.5);
+    
+    li {
+      margin-bottom: $spacing-xs;
+      color: lighten-color($uoc-corporate, 40%);
+    }
+  }
+}
+
+.events-grid {
+  @include grid-layout(1, $spacing-lg, 2, 3);
+}
+
+.speakers-grid {
+  @include grid-layout(1, $spacing-lg, 2, 3);
+}
+
+.hero-section {
+  @include gradient-bg($uoc-corporate, alpha-color($uoc-masterbrand, 0.3));
+  color: white;
+  padding: spacing(4) 0;
+  text-align: center;
+  
+  h1 {
+    font-size: fluid-font-size(rem(32px), rem(56px));
+    font-weight: 700;
+    margin-bottom: spacing(1.5);
+    font-family: $font-family-serif;
+  }
+  
+  p {
+    font-size: fluid-font-size(rem(18px), rem(22px));
+    margin-bottom: spacing(2);
+    opacity: 0.9;
+    max-width: rem(600px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.text-truncate-1 {
+  @include text-truncate(1);
+}
+
+.text-truncate-2 {
+  @include text-truncate(2);
+}
+
+.text-truncate-3 {
+  @include text-truncate(3);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.flex-center {
+  @include flex-center;
+}

@@ -1,3 +1,5 @@
+import "../styles/main.scss";
+
 /**
  * Import dependencies from node_modules
  * see commented examples below

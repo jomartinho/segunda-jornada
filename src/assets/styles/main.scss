@@ -4,10 +4,23 @@
  */
 
 /**
- * Import variables
+ * Import variables first
  */
-
 @import "variables";
+@import "functions";
+@import "mixins";
+
+/**
+ * Import Tailwind CSS
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Import custom utilities after Tailwind
+ */
+@import "utilities";
 
 /**
  * Import npm dependencies

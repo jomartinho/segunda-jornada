@@ -1,27 +1,68 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jornadas sobre Economía Circular - Evento académico sobre sostenibilidad y economía circular">
+    <meta name="keywords" content="economía circular, sostenibilidad, UOC, jornadas, conferencia">
     <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss"><!-- do not remove this line! -->
-    <title>UOC Boilerplate</title>
+    <title>Jornadas Economía Circular - UOC</title>
   </head>
-  <body>
-    <div class="uoc-container">
-      <picture>
-        <source srcset="./assets/images/logo.png?as=webp&width=350" type="image/webp" />
-        <img src="./assets/images/logo.png?width=350" alt="Universitat Oberta de Catalunya" class="uoc-logo" />
-      </picture>
-      <h1 class="uoc-title">Hello, UOC!</h1>
-      <p>
-        This is a starter template for the Advanced HTML and CSS Tools courses
-        from the Master's Program in Multimedia Applications and the Master's
-        Program in Web App and Website Development at the Universitat Oberta de
-        Catalunya.
-      </p>
+  
+  <body class="bg-gray-50 font-sans text-gray-800 antialiased">
+    <include src="views/header.html"></include>
+
+    <div class="page-container">
+      <main class="main-content">
+      <include src="views/components/hero-section.html"></include>
+      
+      <!-- Features Section -->
+      <section class="py-16 bg-white">
+        <div class="max-w-screen-lg mx-auto px-6 md:px-6">
+          <h2 class="text-3xl font-bold text-center text-primary mb-12">¿Por qué participar?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                🤝
+              </div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Networking</h3>
+              <p class="text-gray-600">Conecta con expertos y profesionales del sector de la sostenibilidad</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                💡
+              </div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Innovación</h3>
+              <p class="text-gray-600">Descubre las últimas tendencias y tecnologías en economía circular</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                ⚡
+              </div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Impacto</h3>
+              <p class="text-gray-600">Aprende estrategias para generar un impacto positivo en tu organización</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-gray-50">
+        <div class="max-w-screen-lg mx-auto px-6 md:px-6">
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Información del Evento</h2>
+            <include src="views/components/info-card.html"></include>
+          </div>
+
+          <div id="contacto" class="mb-16">
+            <include src="views/components/contact-button.html"></include>
+          </div>
+        </div>
+      </section>
+      </main>
     </div>
-    <include src="./views/footer.html"></include>
+    
+    <include src="views/footer.html"></include>
+    
     <script type="module" src="./assets/scripts/main.js"></script><!-- do not remove this line! -->
   </body>
 </html>
